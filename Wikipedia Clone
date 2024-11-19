@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikipedia</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"/>
+<style>
+    .dots{
+        height: 20px;
+        width: 20px;
+        margin-left: 30px;
+    }
+    a{
+
+        text-decoration: none;
+    }
+   a:hover{
+    color: black;
+   }
+   .content-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    .content-container .text {
+            flex: 1;
+            margin-right: 20px;
+            margin-top: 30px;
+            line-height: 2.0;
+        }
+    .content-container .image {
+            flex-shrink: 0; 
+            width: 200px;
+            height: auto;
+            border-radius: 20px;
+            
+        }
+</style>
+</head>
+<body>
+    <nav>
+       <a href="#"> <img style="margin: 10px; margin-top: 0px; margin-left: 20px; margin-right: -8px; width: 20px; height: 20px;" src="menu.png" alt="sidebar"></a>
+        <img style="margin: 20px;margin-top: 8px; width: 220px; height: 60px; margin-right: 30px;" src="data:image/jpeg;base64,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" alt="">
+            <img style="width: 30px; height: 30px; margin-right: 0px;" src="magnifying-glass.png" alt="search bar">
+            <input style="width: 400px; margin-left: 0px;" type="search" placeholder="Search. . . . ." aria-label="Search">
+            <input style="width: 80px; height: 30px; margin-top: -5px; font-weight: bold;" class="" type="submit" value="Search">
+            <ul style="display: inline-block; display:inline-flex;gap: 30px;text-decoration: none;" type="none">
+                <li>
+                   <a href="#"> Donate</a>
+                </li>
+                <li>
+                   <a href="#"> Create account</a>
+                </li>
+                <li>
+                   <a href="#"> Login</a>
+                </li>
+            </ul>
+           <a href="#"> <img class="dots" src="dots.png" alt="3 dots"></a>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <div style="margin-left: 20px;" class="row">
+        <div class="col-sm-2">
+            <strong>Contents</strong>
+            <mark>Hide</mark>
+            <hr>
+            <h6>(Top)</h6>
+            <ul>
+                <li style="text-decoration: none;" type="none"> >  <a href="#"> Establishment</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Deity and Idol</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> History</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Ganesh Chaturthi Festival</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Social and Charitable Activities</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Community Significance</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Attraction for Devotees</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Dagdusheth Halwai Ganpati Temple</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> External links</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Referances</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> History</a></li>
+
+                <li style="text-decoration: none;" type="none">><a href="#"> Advertisements</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-8">
+            <h4>Dagadusheth Halwai Ganapati Temple (Pune) <input style="height: 35px; width: 200px; margin-left: 50px; color: cornflowerblue; font-size: small;" type="button" value="语言 5 Languages"></h4>
+            <hr>
+            <ul type="none" style="display: inline-block; display:inline-flex; gap: 30px; text-decoration: none; margin: 0px;padding: 0px;">
+                <li><a href="#">Article</a></li>
+                <li style="margin-right: 300px;"><a href="#">Talk</a></li>
+
+                <li><a href="#">Read</a></li>
+                <li><a href="#">Edit</a></li>
+                <li><a href="#">view History</a></li>
+                <li><a href="#">Tools</a></li>
+            </ul>
+            <hr>
+            <div class="container mt-04 ">
+                <div class="content-container">
+
+                    <p class="text">
+                        From Wikipedia, the free encyclopedia <br>
+                        <br><br>
+
+
+
+                        The <a href="#">Dagadusheth Halwai Ganapati temple</a> is a Hindu Temple located in <a href="#">Pune</a> and is dedicated to the <a href="#">Hindu god Ganesh</a>. The temple is visited by over one hundred thousand pilgrims every year.[1][2] Devotees of the temple include <a href="#">celebrities</a> and <a href="#">chief ministers</a> of <a href="#">Maharashtra</a> who visit during the annual ten-day <a href="#">Ganeshotsav festival</a> .[3] The main Ganesh idol is insured for sum of ₹10 million (US$120,000).[4] It celebrated 132 years of its <a href="#">Ganapati festival</a> in <a href="#">2024</a>.[5]
+                
+                        The <a href="#">Shreemant Dagdusheth Halwai Ganpati Temple</a>, located in the heart of Pune at <a href="#">Budhwar Peth near Laxmi Road</a>, is one of Maharashtra’s most famous and revered Ganesh temples. Established over 125 years ago by <a href="#">Dagdusheth Halwai</a>, a wealthy sweet maker, it was built in memory of his son, who tragically passed away during a plague epidemic. Known for its stunning <a href="#">traditional Hindu architecture</a>, the temple features an idol of Lord Ganesh adorned with over <a href="#"> 40 kilograms of gold ornaments</a>. The temple is a hub of religious activity, <a href="#">philanthropy</a>, and <a href="#">cultural significance</a>. It played a crucial role in India’s freedom movement, as Lokmanya Tilak utilized the Ganesh festival celebrations here to unite people. During <a href="#">Ganesh Chaturthi</a>, the temple comes alive with grand decorations, <a href="#">drawing millions of devotees</a>. Its serene ambiance and 24-hour online darshan service make it accessible to people <a href="#"> worldwide</a>, while its charitable activities underline its commitment to <a href="#">societal welfare</a>.
+
+
+
+
+
+
+
+            
+                    </p>
+                    <img class="image " style="height: 400px; width: 300px; margin-top: -200px;" src="dagdu.jpg" alt="dagduseth halvai photo">
+                </div>
+            </div>
+           
+        </div>
+        <div class="col-sm-2">
+            <div>
+                <strong>Apperance</strong>
+                <mark>Hide</mark>
+                <hr>
+                <h6>Text</h6>
+                <hr>
+                <div class="">
+                    <input  type="radio" name="same" >
+                      Small
+                    </label>
+                  </div>
+                  <div class="">
+                    <input  type="radio" name="same" >
+                      Standard
+                    </label>
+                  </div>
+                  <div class="">
+                    <input  type="radio" name="same"  >
+                      Large
+                    </label>
+                  </div>
+                  <hr>
+                  <h6>Width</h6>
+                  <hr>
+                  <div >
+                    <input  type="radio" name="diff">
+                        Standard
+                    </label>
+                  </div>
+                  <div >
+                    <input  type="radio"  name="diff" >
+                      Wide
+                    </label>
+                  </div>
+                  <hr>
+                  <h6>Color (beta)</h6>
+                  <hr>
+                  <div >
+                    <input  type="radio" name="qua">
+                        Automatic
+                    </label>
+                  </div>
+                  <div >
+                    <input  type="radio" name="qua" >
+                      Light
+                    </label>
+                  </div>
+                  <div >
+                    <input type="radio" name="qua"  >
+                      Dark
+                    </label>
+                  </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
